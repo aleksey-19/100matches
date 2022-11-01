@@ -1,7 +1,4 @@
 # Compiled Object files
-./Build
-*.o
-./Build/test
 *.o
 
 /100matches/x64
