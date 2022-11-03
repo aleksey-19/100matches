@@ -1,4 +1,5 @@
 # Compiled Object files
+*.a
 *.o
 
 /100matches/x64
