@@ -1,12 +1,10 @@
 #include "Start.h"
 #include "game.h"
-#include <Windows.h>
 #include <iostream>
 
 int start()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
     std::cout << "Привет, вы пришли в игру 100 спичек, представьтесь\n";
     for (int i = 0; i <= 1; i++) {
         std::cout << "Игрок " << i + 1 << ": ";

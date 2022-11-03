@@ -11,11 +11,13 @@ string winner;
 
 void player_win()
 {
+    setlocale(LC_ALL, "Russian");
     cout << "Победил " << winner;
 }
 
 void game()
 {
+    setlocale(LC_ALL, "Russian");
     while (matches > 0) {
         for (int i = 0; i <= 1; i++) {
             cout << "Ходит " << player[i] << endl;
@@ -33,6 +35,7 @@ void game()
 
 int getMatches()
 {
+    setlocale(LC_ALL, "Russian");
     int ch;
     int const k = 2;
     char str[k] = {'\0'};
@@ -89,6 +92,7 @@ int raznostMatches(int count)
 
 string player_names(int i)
 {
+    setlocale(LC_ALL, "Russian");
     bool flag = false;
     int ch;
     int const k = 16;
@@ -99,7 +103,7 @@ string player_names(int i)
         if (ch != 13) {
             if ((ch == 72 || ch == 80 || ch == 77 || ch == 75)
                 && flag == true) {
-                std::cout << "Стрелки - Недопустимый символ" << endl;
+                cout << "Стрелки - Недопустимый символ" << endl;
                 if (str[0] != '0') {
                     cout << str;
                 }
@@ -112,12 +116,6 @@ string player_names(int i)
                 n++;
                 flag = false;
             }
-            /*{
-                ch = 224;
-                cout << char(ch);
-                str[n] = char(ch);
-                n++;
-            }*/
             if (ch == 224) {
                 flag = true;
             }
