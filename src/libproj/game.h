@@ -3,9 +3,11 @@
 #include <string>
 using namespace std;
 
-int getMatches(int count);
-void game();
-string player_names(int i);
 void player_win();
+void game();
+int getMatches();
+int raznostMatches(int count);
+string player_names(int i);
+
 
 #endif
