@@ -2,10 +2,9 @@ name: Build
 
 on: push
 
-os: windows
-
 jobs:
   build:
+    os: windows
     runs-on: windows
 
     steps:
