@@ -9,5 +9,4 @@ int getMatches();
 int raznostMatches(int count);
 string player_names(int i);
 
-
 #endif

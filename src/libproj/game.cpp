@@ -1,8 +1,8 @@
 #include "game.h"
-#include <iostream>
-#include <cstdlib>
-#include <string.h>
 #include <conio.h>
+#include <cstdlib>
+#include <iostream>
+#include <string.h>
 using namespace std;
 
 int matches = 100;
@@ -11,29 +11,24 @@ string winner;
 
 void player_win()
 {
-	cout << "Победил " << winner;
+    cout << "Победил " << winner;
 }
 
 void game()
 {
-	while (matches > 0)
-	{
-		for (int i = 0; i <= 1; i++)
-		{
-			cout << "Ходит " << player[i] << endl;
+    while (matches > 0) {
+        for (int i = 0; i <= 1; i++) {
+            cout << "Ходит " << player[i] << endl;
             int count = getMatches();
             raznostMatches(count);
-			if (matches > 0)
-			{
+            if (matches > 0) {
                 cout << "Осталость спичек: " << matches << endl;
-			}
-			else
-			{
-				winner = player[i];
-				break;
-			}
-		}
-	}
+            } else {
+                winner = player[i];
+                break;
+            }
+        }
+    }
 }
 
 int getMatches()
@@ -70,7 +65,7 @@ int getMatches()
         get = atoi(str);
         if (ch == 13 || n == k) {
             if (get >= 1 && get <= 10) {
-                cout << std::endl; 
+                cout << std::endl;
                 break;
             } else {
                 cout << endl;
@@ -80,7 +75,7 @@ int getMatches()
                 str[1] = {'\0'};
             }
         }
-	}
+    }
     return get;
 }
 
@@ -101,16 +96,17 @@ string player_names(int i)
     int n = 0;
     while (n < k) {
         ch = _getch();
-        if (ch != 13) {           
-            if ((ch == 72 || ch == 80 || ch == 77 || ch == 75) && flag == true) {
+        if (ch != 13) {
+            if ((ch == 72 || ch == 80 || ch == 77 || ch == 75)
+                && flag == true) {
                 std::cout << "Стрелки - Недопустимый символ" << endl;
                 if (str[0] != '0') {
                     cout << str;
                 }
                 flag = false;
             }
-            if ((ch != 72 && ch != 80 && ch != 77 && ch != 75) && flag == true) {
-
+            if ((ch != 72 && ch != 80 && ch != 77 && ch != 75)
+                && flag == true) {
                 cout << char(224);
                 str[n] = char(224);
                 n++;
@@ -121,7 +117,7 @@ string player_names(int i)
                 cout << char(ch);
                 str[n] = char(ch);
                 n++;
-            }*/ 
+            }*/
             if (ch == 224) {
                 flag = true;
             }
@@ -129,25 +125,24 @@ string player_names(int i)
                 cout << char(ch);
                 str[n] = char(ch);
                 n++;
-            } else if ((ch != 72 && ch != 80 && ch != 77 && ch != 75) && flag == false) {
+            } else if (
+                    (ch != 72 && ch != 80 && ch != 77 && ch != 75)
+                    && flag == false) {
                 std::cout << "Недопустимый символ" << endl;
                 if (str[0] != '0') {
                     cout << str;
                 }
             }
 
-        } 
-		else {
+        } else {
             if (str[0] != '0') {
                 break;
-            }
-			else {
+            } else {
                 cout << "Нужно ввести имя." << endl;
             }
-		}
-		
+        }
     }
     cout << endl;
     player[i] = str;
-	return player[i];
+    return player[i];
 }
