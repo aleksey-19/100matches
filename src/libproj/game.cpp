@@ -68,7 +68,7 @@ int getMatches()
         get = atoi(str);
         if (ch == 13 || n == k) {
             if (get >= 1 && get <= 10) {
-                cout << std::endl;
+                cout << endl;
                 break;
             } else {
                 cout << endl;
@@ -119,14 +119,14 @@ string player_names(int i)
             if (ch == 224) {
                 flag = true;
             }
-            if (((ch >= 128 && ch <= 175) || (ch >= 225 && ch <= 243))) {
+            if (((ch >= 128 && ch <= 175) || (ch >= 225 && ch <= 255))) {
                 cout << char(ch);
                 str[n] = char(ch);
                 n++;
             } else if (
                     (ch != 72 && ch != 80 && ch != 77 && ch != 75)
                     && flag == false) {
-                std::cout << "Недопустимый символ" << endl;
+                cout << "Недопустимый символ" << endl;
                 if (str[0] != '0') {
                     cout << str;
                 }
