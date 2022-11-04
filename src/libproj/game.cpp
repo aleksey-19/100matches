@@ -36,46 +36,41 @@ void game()
 int getMatches()
 {
     setlocale(LC_ALL, "Russian");
+    bool flag = false;
     int ch;
     int const k = 2;
     char str[k] = {'\0'};
     int n = 0;
     int get;
-    while (n < k) {
-        ch = _getch();
-        if (ch != 13) {
-            if (ch == 224) {
-                cout << endl;
-                cout << "Недопустимый символ." << endl;
-                n = 0;
-                str[0] = {'0'};
-                str[1] = {'\0'};
-            } else {
+    while (flag != true) {
+        while (n < k) {
+            ch = getchar();
+            if (ch != 10) {
                 if (ch >= 48 && ch <= 57) {
-                    cout << char(ch);
                     str[n] = char(ch);
                     n++;
                 } else {
-                    cout << endl;
-                    cout << "Недопустимый символ, напишите число сначала"
-                         << endl;
                     n = 0;
                     str[0] = {'0'};
                     str[1] = {'\0'};
                 }
+            } else {
+                break;
             }
         }
         get = atoi(str);
-        if (ch == 13 || n == k) {
-            if (get >= 1 && get <= 10) {
-                cout << endl;
-                break;
-            } else {
-                cout << endl;
-                cout << "Нужно ввести число от 1 до 10" << endl;
-                n = 0;
-                str[0] = {'0'};
-                str[1] = {'\0'};
+        if (get >= 1 && get <= 10) {
+            flag = true;
+            while (ch != 10) {
+                ch = getchar();
+            }
+        } else {
+            cout << "Нужно ввести число от 1 до 10" << endl;
+            n = 0;
+            str[0] = {'0'};
+            str[1] = {'\0'};
+            while (ch != 10) {
+                ch = getchar();
             }
         }
     }
@@ -98,49 +93,26 @@ string player_names(int i)
     int const k = 16;
     char str[k] = {'0'};
     int n = 0;
-    while (n < k) {
-        ch = _getch();
-        if (ch != 13) {
-            if ((ch == 72 || ch == 80 || ch == 77 || ch == 75)
-                && flag == true) {
-                cout << "Стрелки - Недопустимый символ" << endl;
-                if (str[0] != '0') {
-                    cout << str;
+    while (flag != true) {
+        flag = false;
+        while (n < k) {
+            ch = getchar();
+            if (ch != 10) {
+                if (((ch >= 192 && ch <= 223) || (ch >= 224 && ch <= 255))) {
+                    str[n] = char(ch);
+                    n++;
                 }
-                flag = false;
-            }
-            if ((ch != 72 && ch != 80 && ch != 77 && ch != 75)
-                && flag == true) {
-                cout << char(224);
-                str[n] = char(224);
-                n++;
-                flag = false;
-            }
-            if (ch == 224) {
-                flag = true;
-            }
-            if (((ch >= 128 && ch <= 175) || (ch >= 225 && ch <= 255))) {
-                cout << char(ch);
-                str[n] = char(ch);
-                n++;
-            } else if (
-                    (ch != 72 && ch != 80 && ch != 77 && ch != 75)
-                    && flag == false) {
-                cout << "Недопустимый символ" << endl;
-                if (str[0] != '0') {
-                    cout << str;
-                }
-            }
-
-        } else {
-            if (str[0] != '0') {
-                break;
             } else {
-                cout << "Нужно ввести имя." << endl;
+                if (str[0] != '0') {
+                    flag = true;
+                    break;
+                } else {
+                    cout << "Недопустимый символ" << endl;
+                    n = 0;
+                }
             }
         }
     }
-    cout << endl;
     player[i] = str;
     return player[i];
 }
