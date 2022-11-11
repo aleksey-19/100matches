@@ -45,6 +45,7 @@ ${PREF_BUILD_LIBPROJ}libproj.a : ${PREF_BUILD_LIBPROJ}game.o ${PREF_BUILD_LIBPRO
 
 clean :
 	rm ${PREF_BIN}${TARGET} ${PREF_BIN}${TARGET_TEST} ${PREF_BUILD_LIBPROJ}*.* ${PREF_BUILD_PROJ}*.*
+	rm ${PREF_BUILD}test/*.*
 
 ####################################
 
