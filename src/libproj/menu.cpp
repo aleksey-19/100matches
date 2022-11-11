@@ -71,7 +71,6 @@ int menu()
     cout << "3. Выход\n";
     cout << "Выберите режим игры: ";
     do {
-        int ch;
         input = getNum();
         switch (input) {
         case 1:
