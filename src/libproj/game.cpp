@@ -1,5 +1,4 @@
 #include "game.h"
-#include "conio.h"
 #include <cstdlib>
 #include <iostream>
 #include <string.h>
