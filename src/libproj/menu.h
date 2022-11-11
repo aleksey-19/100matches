@@ -1,5 +1,5 @@
-#ifndef BOT
-#define BOT
+#ifndef MENU
+#define MENU
 #include <string>
 using namespace std;
 

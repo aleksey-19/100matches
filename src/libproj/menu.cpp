@@ -1,5 +1,5 @@
 #include "Start.h"
-#include "bot.h"
+//#include "bot.h"
 #include <iostream>
 #include <locale.h>
 #include <string.h>
@@ -8,7 +8,7 @@ using namespace std;
 
 void onePlayer()
 {
-    games();
+    //games();
 }
 void twoPlayers()
 {
