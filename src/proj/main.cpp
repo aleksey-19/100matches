@@ -1,6 +1,6 @@
-﻿#include "../libproj/Start.h"
+﻿#include "../libproj/menu.h"
 
 int main()
 {
-    start();
+    menu();
 }
