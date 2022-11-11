@@ -8,7 +8,7 @@ using namespace std;
 
 void onePlayer()
 {
-    //games();
+    // games();
 }
 void twoPlayers()
 {
