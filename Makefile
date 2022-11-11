@@ -40,7 +40,10 @@ ${PREF_BUILD_LIBPROJ}game.o : ${PREF_SRC_LIBPROJ}game.cpp
 ${PREF_BUILD_LIBPROJ}Start.o : ${PREF_SRC_LIBPROJ}Start.cpp
 	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
 
-${PREF_BUILD_LIBPROJ}libproj.a : ${PREF_BUILD_LIBPROJ}game.o ${PREF_BUILD_LIBPROJ}Start.o
+${PREF_BUILD_LIBPROJ}menu.o : ${PREF_SRC_LIBPROJ}menu.cpp
+	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
+
+${PREF_BUILD_LIBPROJ}libproj.a : ${PREF_BUILD_LIBPROJ}game.o ${PREF_BUILD_LIBPROJ}Start.o ${PREF_BUILD_LIBPROJ}menu.o
 	ar rcs $@ $^
 
 clean :
