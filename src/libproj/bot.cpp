@@ -1,5 +1,4 @@
 #include "bot.h"
-#include <conio.h>
 #include <cstdlib>
 #include <iostream>
 #include <math.h>
