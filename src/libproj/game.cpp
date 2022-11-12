@@ -133,7 +133,7 @@ char alfavit(char ch)
     return ch;
 }
 
-string player_namesProv(char *name)
+string player_namesProv(char* name)
 {
     if (name[0] != '\0') {
         for (int i = 0; i <= *name; i++) {
