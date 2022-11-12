@@ -1,4 +1,5 @@
 #include "game.h"
+#include "bot.h"
 #include <cstdlib>
 #include <iostream>
 #include <string.h>
@@ -22,6 +23,31 @@ void game()
             cout << "Ходит " << player[i] << endl;
             int count = getMatches();
             raznostMatches(count);
+            if (matches > 0) {
+                cout << "Осталость спичек: " << matches << endl;
+            } else {
+                winner = player[i];
+                break;
+            }
+        }
+    }
+}
+
+void gameBot()
+{
+    int count;
+    setlocale(LC_ALL, "Russian");
+    while (matches > 0) {
+        for (int i = 0; i <= 1; i++) {
+            cout << "Ходит " << player[i] << endl;
+            if (player[i] == player[0]) {
+                count = getMatches();
+                raznostMatches(count);
+            }
+            if (player[i] == player[1]) {
+                count = easbot();
+                raznostMatches(count);
+            }
             if (matches > 0) {
                 cout << "Осталость спичек: " << matches << endl;
             } else {
@@ -113,5 +139,11 @@ string player_names(int i)
         }
     }
     player[i] = str;
+    return player[i];
+}
+
+string bot_name(int i)
+{
+    player[i] = "Компьютер";
     return player[i];
 }

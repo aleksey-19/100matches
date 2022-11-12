@@ -8,7 +8,7 @@ using namespace std;
 
 void onePlayer()
 {
-    games();
+    startBot();
 }
 void twoPlayers()
 {
@@ -59,6 +59,15 @@ int getNum()
     return get;
 }
 
+void text()
+{
+    system("cls");
+    std::cout << "Представьтесь." << endl;
+    std::cout << "Для написания имени можно использовать только русские "
+                 "символы"
+              << endl;
+}
+
 int menu()
 {
     int input;
@@ -74,9 +83,11 @@ int menu()
         input = getNum();
         switch (input) {
         case 1:
+            text();
             onePlayer();
             break;
         case 2:
+            text();
             twoPlayers();
             break;
         case 3:
