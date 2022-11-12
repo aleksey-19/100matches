@@ -149,6 +149,7 @@ string player_name(int i)
 
 int games()
 {
+    system("cls");
     std::cout << "Представьтесь." << endl;
     std::cout << "Для написания имени можно использовать только русские символы"
               << endl;
