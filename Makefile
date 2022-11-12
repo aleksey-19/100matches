@@ -1,30 +1,64 @@
 TARGET = Matches
 CC = g++
-CFLAGS = -g -w -Wall
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -MMD
 
-PREF_SRC = ./100matches/
-PREF_BUILD = ./Build/
+PREF_BIN = ./bin/
 
-TEST_MAKEFILE = ./Tests/
+PREF_BUILD = ./obj/
+PREF_BUILD_PROJ = ${PREF_BUILD}src/proj/
+PREF_BUILD_LIBPROJ = ${PREF_BUILD}src/libproj/
 
-SRC = $(wildcard ${PREF_SRC}*.cpp)
-OBJ = $(patsubst ${PREF_SRC}%.cpp, ${PREF_BUILD}%.o, ${SRC})
+PREF_SRC = ./src/
+PREF_SRC_PROJ = ${PREF_SRC}proj/
+PREF_SRC_LIBPROJ = ${PREF_SRC}libproj/
+
+#################################################
+TESTCFLAGS = -g -w -Wall
+
+TARGET_TEST = test_unit
+
+PREF_SRC_TEST = ./test/
+
+PREF_TEST_BUILD_TEST = ${PREF_BUILD}test/
+PREF_TEST_BUILD_SRC_LIBPROJ = ${PREF_BUILD}src/libproj/
+
 
 default : all
 
 all : ${TARGET} test
 
-${TARGET} : ${OBJ}
-	${CC} ${CFLAGS} ${OBJ} -o ${TARGET}
+${TARGET} : ${PREF_BUILD_PROJ}main.o ${PREF_BUILD_LIBPROJ}libproj.a
+	${CC} ${CFLAGS} -o ${PREF_BIN}$@ $^
 
-${PREF_BUILD}%.o : ${PREF_SRC}%.cpp
-	${CC} -c $< -o $@
+${PREF_BUILD_PROJ}main.o : ${PREF_SRC_PROJ}main.cpp
+	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
+
+${PREF_BUILD_LIBPROJ}game.o : ${PREF_SRC_LIBPROJ}game.cpp
+	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
+
+${PREF_BUILD_LIBPROJ}Start.o : ${PREF_SRC_LIBPROJ}Start.cpp
+	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
+
+${PREF_BUILD_LIBPROJ}menu.o : ${PREF_SRC_LIBPROJ}menu.cpp
+	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
+
+${PREF_BUILD_LIBPROJ}bot.o : ${PREF_SRC_LIBPROJ}bot.cpp
+	${CC} -c ${CFLAGS} ${CPPFLAGS} -o $@ $<
+
+${PREF_BUILD_LIBPROJ}libproj.a : ${PREF_BUILD_LIBPROJ}game.o ${PREF_BUILD_LIBPROJ}Start.o ${PREF_BUILD_LIBPROJ}menu.o ${PREF_BUILD_LIBPROJ}bot.o
+	ar rcs $@ $^
 
 clean :
-	rm ${TARGET} ${PREF_BUILD}*.o
-	rm ${TARGET_TEST} ${PREF_BUILD}test/*.o
+	rm ${PREF_BIN}${TARGET} ${PREF_BIN}${TARGET_TEST} ${PREF_BUILD_LIBPROJ}*.* ${PREF_BUILD_PROJ}*.*
+	rm ${PREF_BUILD}test/*.*
 
-test :
-	cd Tests && make ${TARGET_TEST}
+####################################
 
--include ${TEST_MAKEFILE}Makefile
+test : ${TARGET_TEST}
+
+${TARGET_TEST} : ${PREF_TEST_BUILD_TEST}test.o ${PREF_TEST_BUILD_SRC_LIBPROJ}libproj.a
+	${CC} ${TESTCFLAGS} -o ${PREF_BIN}$@ $^
+
+${PREF_TEST_BUILD_TEST}test.o : ${PREF_SRC_TEST}test.cpp
+	${CC} -c ${TESTCFLAGS} -o $@ $<

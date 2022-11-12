@@ -1,15 +1,6 @@
 # Compiled Object files
-./Build
+*.a
 *.o
-./Build/test
-*.o
-
-/100matches/x64
-/100matches/.vs
-/100matches/*.sln
-/100matches/*.vcxproj
-/100matches/*.filters
-/100matches/*.user
-
+*.d
 # Executables
 *.exe

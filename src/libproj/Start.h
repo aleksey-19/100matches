@@ -2,5 +2,6 @@
 #define START
 
 int start();
+int startBot();
 
 #endif
