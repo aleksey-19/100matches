@@ -110,6 +110,46 @@ int raznostMatches(int count)
     return matches;
 }
 
+char alfavit(char ch)
+{
+    bool flag = false;
+    char rusName[66] = {'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', '¨', 'Æ', 'Ç', 'È', 'É',
+                        'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô',
+                        'Õ', 'Ö', '×', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'Þ', 'ß',
+                        'à', 'á', 'â', 'ã', 'ä', 'å', '¸', 'æ', 'ç', 'è', 'é',
+                        'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ð', 'ñ', 'ò', 'ó', 'ô',
+                        'õ', 'ö', '÷', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'þ', 'ÿ'};
+    for (int i = 0; i <= 65; i++) {
+        if (ch == rusName[i]) {
+            flag = true;
+        }
+        if (i == 65 && flag == false) {
+            cout << "fail";
+        }
+        if (flag == true) {
+            break;
+        }
+    }
+    return ch;
+}
+
+string player_namesProv(char *name)
+{
+    if (name[0] != '\0') {
+        for (int i = 0; i <= *name; i++) {
+            if (name[i] != '\0') {
+                if (name[i] != alfavit(name[i])) {
+                    for (int j = 0; j <= 15; j++) {
+                        name[j] = '\0';
+                    }
+                    return name;
+                }
+            }
+        }
+    }
+    return name;
+}
+
 string player_names(int i)
 {
     setlocale(LC_ALL, "Russian");
@@ -136,6 +176,10 @@ string player_names(int i)
                     n = 0;
                 }
             }
+        }
+        if (player_namesProv(str) == "\0") {
+            cout << "fail\n";
+            flag = false;
         }
     }
     player[i] = str;

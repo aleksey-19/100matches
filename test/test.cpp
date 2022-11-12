@@ -26,4 +26,13 @@ void vvod_count(void)
             (matches - 20));
 }
 
-TEST_LIST = {{"int vvod(int);", vvod_count}, {0}};
+void vvod_rus_char(void)
+{
+    TEST_ASSERT_(
+            player_namesProv("Вася") == "Вася",
+            "getMatches(%s)==%s",
+            "Вася",
+            "Вася");
+}
+
+TEST_LIST = {{"vvod_chisel", vvod_count}, {"vvod_rus_char", vvod_char}, {0, 0}};
