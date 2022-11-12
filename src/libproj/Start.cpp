@@ -1,6 +1,6 @@
 #include "Start.h"
-#include "game.h"
 #include "bot.h"
+#include "game.h"
 #include <iostream>
 
 int start()
