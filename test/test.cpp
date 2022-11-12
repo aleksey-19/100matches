@@ -35,4 +35,5 @@ void vvod_rus_char(void)
             "Вася");
 }
 
-TEST_LIST = {{"vvod_chisel", vvod_count}, {"vvod_rus_char", vvod_char}, {0, 0}};
+TEST_LIST = {
+        {"vvod_chisel", vvod_count}, {"vvod_rus_char", vvod_rus_char}, {0, 0}};
