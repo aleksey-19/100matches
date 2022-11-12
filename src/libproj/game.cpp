@@ -9,13 +9,13 @@ int matches = 100;
 string player[2];
 string winner;
 
-void player_win()
+void player_win() //ÂÛÂÎÄ ÏÎÁÅÄÈÒÅËß
 {
     setlocale(LC_ALL, "Russian");
     cout << "Ïîáåäèë " << winner;
 }
 
-void game()
+void game() //ÈÃĞÀ Ñ ×ÅËÎÂÅÊÎÌ
 {
     setlocale(LC_ALL, "Russian");
     while (matches > 0) {
@@ -33,7 +33,7 @@ void game()
     }
 }
 
-void gameBot()
+void gameBot() //ÈÃĞÀ Ñ ÁÎÒÎÌ
 {
     int count;
     setlocale(LC_ALL, "Russian");
@@ -102,7 +102,7 @@ int getMatches()
     return get;
 }
 
-int raznostMatches(int count)
+int raznostMatches(int count) //ÂÛ×ÈÒÀÅÍÈÅ ÈÇ ÊÓ×È ÂÂÅÄ¨ÍÍÎÅ ÇÍÀ×ÅÍÈÅ
 {
     if (count >= 1 && count <= 10) {
         matches = matches - count;
@@ -110,7 +110,7 @@ int raznostMatches(int count)
     return matches;
 }
 
-char alfavit(char ch)
+char alfavit(char ch) //ÑĞÀÂÍÅÍÈÅ ÁÓÊÂ ÈÇ ÑÒĞÎÊÈ Ñ ĞÓÑÑÊÈÌÈ ÑÈÌÂÎËÀÌÈ ÈÇ ÌÀÑÑÈÂÀ
 {
     bool flag = false;
     char rusName[66] = {'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', '¨', 'Æ', 'Ç', 'È', 'É',
@@ -121,19 +121,20 @@ char alfavit(char ch)
                         'õ', 'ö', '÷', 'ø', 'ù', 'ú', 'û', 'ü', 'ı', 'ş', 'ÿ'};
     for (int i = 0; i <= 65; i++) {
         if (ch == rusName[i]) {
-            flag = true;
+            flag = true; //ÁÓÊÂÀ ÍÀÉÄÅÍÀ
         }
-        if (i == 65 && flag == false) {
-            cout << "fail";
+        if (i == 65 && flag == false) { //ÅÑËÈ ÍÅÒ ÁÓÊÂÛ ÂÛÂÎÄÈÒÑß ÎØÈÁÊÀ
+            cout << "Îøèáêà";
         }
         if (flag == true) {
-            break;
+            break; //ÅÑËÈ ÁÓÊÂÀ ÍÀÉÄÅÍÀ ÇÀÊÎÍ×ÈÒÜ ÏĞÎÂÅĞÊÓ
         }
     }
     return ch;
 }
 
-string player_namesProv(char* name)
+string player_namesProv(char* name) //ÏĞÎÂÅĞÊÀ ÑÒĞÎÊÈ ÈÌÅÍÈ Ñ ĞÓÑÑÊÈÌÈ ÁÓÊÂÀÌÈ
+                                    //ÈÇ ÔÓÍÊÖÈÈ "alfavit"
 {
     if (name[0] != '\0') {
         for (int i = 0; i <= *name; i++) {
