@@ -1,9 +1,9 @@
 #include "bot.h"
+#include <conio.h>
 #include <cstdlib>
 #include <iostream>
-#include <string.h>
 #include <math.h>
-#include <conio.h>
+#include <string.h>
 
 using namespace std;
 
@@ -11,7 +11,6 @@ int matche = 100;
 string playe[2];
 string winne;
 string enemy = "Компьютер";
-
 
 void player_wi()
 {
@@ -25,16 +24,16 @@ void gamebot()
     while (matche > 0) {
         for (int i = 0; i <= 1; i++) {
             if (playe[i] == playe[0]) {
-            cout << "Ходит " << playe[i] << endl;
-            int count = getMatche();
-            raznostMatche(count);
-            if (matche > 0) {
-                cout << "Осталость спичек: " << matche << endl;
-            } else {
-                winne = playe[i];
-                break;
+                cout << "Ходит " << playe[i] << endl;
+                int count = getMatche();
+                raznostMatche(count);
+                if (matche > 0) {
+                    cout << "Осталость спичек: " << matche << endl;
+                } else {
+                    winne = playe[i];
+                    break;
+                }
             }
-            } 
             if (playe[i] == playe[1]) {
                 cout << "Ходит " << playe[i] << endl;
                 int count = easbot();
@@ -107,7 +106,6 @@ int easbot()
     return geti;
 }
 
-
 int raznostMatche(int count)
 {
     if (count >= 1 && count <= 10) {
@@ -159,7 +157,7 @@ int games()
             std::cout << "Игрок " << i + 1 << ": ";
             player_name(i);
         }
-        if (i==1) {
+        if (i == 1) {
             playe[1] = enemy;
         }
     }
